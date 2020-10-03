@@ -28,4 +28,4 @@ extra-x86_64-build -- -U user
 
 # Save the artifacts
 mkdir -p "$INPUT_OUTDIR"
-cp *.pkg.* "$INPUT_OUTDIR"/
+cp $(ls *.pkg.* | grep -v '\.log$') "$INPUT_OUTDIR"/
