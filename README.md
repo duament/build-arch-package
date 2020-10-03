@@ -14,11 +14,9 @@ jobs:
       - name: Build Arch Linux package
         uses: FFY00/build-arch-package@v1
         with:
-          PKGBUILD: path/to/my/PKGBUILD
+          PKGBUILD: path/to/PKGBUILD/dir
       ...
 ```
-
-`%COMMIT%` in the PKGBUILD will be replaced by the commit that triggered the action.
 
 See [.github/workflows/test.yml](.github/workflows/test.yml) for a working example.
 
@@ -26,7 +24,7 @@ See [.github/workflows/test.yml](.github/workflows/test.yml) for a working examp
 
 Key        | Description                                 | Required | Default Value
 ---------- | ------------------------------------------- |:--------:| -------------
-`PKGBUILD` | PKGBUILD path                               | **Yes**  |
+`PKGBUILD` | PKGBUILD directory                          | **Yes**  |
 `OUTDIR`   | Output directory to store the built package | No       | `$HOME/arch-packages`
 
 ###### You can use environment variable names in the options, they will be resolved.

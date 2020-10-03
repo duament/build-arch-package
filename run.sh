@@ -9,9 +9,6 @@ fi
 INPUT_PKGBUILD="$(eval echo $INPUT_PKGBUILD)"
 INPUT_OUTDIR="$(eval echo $INPUT_OUTDIR)"
 
-# Get PKGBUILD dir
-PKGBUILD_DIR=$(dirname $(readlink -f $INPUT_PKGBUILD))
-
 # Prepare the environment
 pacman -Syu --noconfirm --noprogressbar --needed base-devel devtools btrfs-progs dbus sudo
 
@@ -23,8 +20,7 @@ useradd -m user
 cd /home/user
 
 # Copy PKGBUILD and *.install scripts
-cp "$PKGBUILD_DIR"/*install ./ || true
-sed "s|%COMMIT%|$GITHUB_SHA|" "$INPUT_PKGBUILD" > PKGBUILD
+cp "$INPUT_PKGBUILD"/* ./ || true
 chown user PKGBUILD
 
 # Build the package

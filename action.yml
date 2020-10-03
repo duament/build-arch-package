@@ -3,7 +3,7 @@ name: build-arch-package
 description: Build an Arch Linux package
 inputs:
   PKGBUILD:
-    description: PKGBUILD path
+    description: PKGBUILD directory
     required: true
   OUTDIR:
     description: Output directory to store the built package (relative to $HOME)
