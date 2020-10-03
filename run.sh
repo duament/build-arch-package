@@ -29,3 +29,8 @@ extra-x86_64-build -- -U user
 # Save the artifacts
 mkdir -p "$INPUT_OUTDIR"
 cp $(ls *.pkg.* | grep -v '\.log$') "$INPUT_OUTDIR"/
+
+pkg_path=$(ls -d "$INPUT_OUTDIR")
+pkg_name=$(ls "$INPUT_OUTDIR")
+echo "::set-output name=pkg_path::$pkg_path"
+echo "::set-output name=pkg_name::$pkg_name"
