@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-if [ -z "$INPUT_PKGBUILD" ] || [ -z "$INPUT_OUTDIR" ] || [ -z "$GITHUB_SHA" ]; then
+if [ -z "$INPUT_PKGBUILD" ] || [ -z "$INPUT_OUTDIR" ] || [ -z "$INPUT_PARAM" ] || [ -z "$GITHUB_SHA" ]; then
     echo 'Missing environment variables'
     exit 1
 fi
@@ -24,7 +24,7 @@ cp "$INPUT_PKGBUILD"/* ./ || true
 chown user PKGBUILD
 
 # Build the package
-extra-x86_64-build -- -U user
+extra-x86_64-build -- -U user $(echo $INPUT_PARAM)
 
 # Save the artifacts
 mkdir -p "$INPUT_OUTDIR"
