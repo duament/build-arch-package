@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-if [ -z "$INPUT_PKGBUILD" ] || [ -z "$INPUT_OUTDIR" ] || [ -z "$INPUT_PARAM" ] || [ -z "$GITHUB_SHA" ]; then
+if [ -z "$INPUT_PKGBUILD" ] || [ -z "$INPUT_OUTDIR" ] || [ -z "$GITHUB_SHA" ]; then
     echo 'Missing environment variables'
     exit 1
 fi
