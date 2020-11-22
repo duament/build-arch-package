@@ -20,13 +20,11 @@ useradd -m user
 cd /home/user
 
 # Enable auto-key-retrieve
-mkdir .gnupg
-cat <<EOF >> .gnupg/gpg.conf
+mkdir ~/.gnupg
+cat <<EOF >> ~/.gnupg/gpg.conf
 keyserver-options auto-key-retrieve
 auto-key-locate https://keyserver.ubuntu.com
 EOF
-chown -R user .gnupg
-chmod 600 .gnupg/gpg.conf
 
 # Copy PKGBUILD and *.install scripts
 cp "$INPUT_PKGBUILD"/* ./ || true
