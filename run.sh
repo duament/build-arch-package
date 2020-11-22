@@ -19,6 +19,13 @@ sed -i "s|MAKEFLAGS=.*|MAKEFLAGS=-j$(nproc)|" /etc/makepkg.conf
 useradd -m user
 cd /home/user
 
+# Enable auto-key-retrieve
+mkdir .gnupg
+cat <<EOF >> .gnupg/gpg.conf
+keyserver-options auto-key-retrieve
+auto-key-locate https://keyserver.ubuntu.com
+EOF
+
 # Copy PKGBUILD and *.install scripts
 cp "$INPUT_PKGBUILD"/* ./ || true
 chown user PKGBUILD
