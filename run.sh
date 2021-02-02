@@ -22,6 +22,13 @@ sed -i "s|MAKEFLAGS=.*|MAKEFLAGS=-j$(nproc)|" /etc/makepkg.conf
 useradd -m user
 cd /home/user
 
+# Import PGP keys
+if [ -n "$PUBKEY_DIR" ]; then
+    for file in "$PUBKEY_DIR"/*; do
+        sudo -u user gpg --batch --import "$file"
+    done
+fi
+
 # Copy PKGBUILD and other files
 cp "$INPUT_DIR"/* ./ || true
 chown user PKGBUILD
