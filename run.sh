@@ -9,7 +9,8 @@ fi
 INPUT_DIR="$(eval echo $INPUT_DIR)"
 
 # Add custom repo
-cp pacman-duama.conf /etc/pacman.conf
+self_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+cp $self_dir/pacman-duama.conf /etc/pacman.conf
 
 # Prepare the environment
 pacman -Syu --noconfirm --noprogressbar --needed base-devel devtools devtools-duama btrfs-progs dbus sudo jq
