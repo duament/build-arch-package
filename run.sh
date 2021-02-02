@@ -31,7 +31,7 @@ duama-x86_64-build -- -U user
 
 rm -f *.log
 
-basename=$(basename "INPUT_DIR")
+basename=$(basename "$INPUT_DIR")
 first_pkg_filename=$(ls *.pkg.tar.* | head -n 1)
 t=${first_pkg_filename%-*}
 pkgrel=${t##*-}
