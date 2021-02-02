@@ -61,7 +61,7 @@ do
         --data-binary @$filename \
 	"$upload_url?name=$filename")
     
-    browser_download_url=$(echo "res" | jq -r '.browser_download_url')
+    browser_download_url=$(echo "$res" | jq -r '.browser_download_url')
     
     # Trigger repo-add
     curl \
