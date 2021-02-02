@@ -47,7 +47,7 @@ res=$(curl \
     "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases" \
     -d "{\"tag_name\":\"$basename-$(date +%Y%m%d%H%M)\", \"name\":\"$basename: $pkgver-$pkgrel\"}")
 
-upload_url=$(echo "$res" | jq '.upload_url')
+upload_url=$(echo "$res" | jq -r '.upload_url')
 upload_url=${upload_url%\{*}
 
 for filename in *.pkg.tar.*
@@ -61,7 +61,7 @@ do
         --data-binary @$filename \
 	"$upload_url?name=$filename")
     
-    browser_download_url=$(echo "res" | jq '.browser_download_url')
+    browser_download_url=$(echo "res" | jq -r '.browser_download_url')
     
     # Trigger repo-add
     curl \
