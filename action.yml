@@ -11,7 +11,7 @@ branding:
 runs:
   using: composite
   steps:
-    - run: ${{ github.action_path }}/run.sh
+    - run: /__w/_actions/duament/build-arch-package/master/run.sh
       shell: bash
       env:
         INPUT_DIR: ${{ inputs.DIR }}
