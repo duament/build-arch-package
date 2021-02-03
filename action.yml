@@ -9,5 +9,9 @@ branding:
   color: blue
   icon: archive
 runs:
-  using: node12
-  main: index.js
+  using: composite
+  steps:
+    - run: ${{ github.action_path }}/run.sh
+      shell: bash
+      env:
+        INPUT_DIR: ${{ inputs.DIR }}
