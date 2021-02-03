@@ -12,19 +12,22 @@ jobs:
     steps:
       ...
       - name: Build Arch Linux package
-        uses: FFY00/build-arch-package@v1
+        uses: duama/build-arch-package@master
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBKEY_DIR: /gpg_keys
         with:
-          PKGBUILD: path/to/PKGBUILD/dir
+          DIR: path/to/PKGBUILD_DIR
       ...
 ```
 
-See [.github/workflows/test.yml](.github/workflows/test.yml) for a working example.
-
 ### Arguments
 
-Key        | Description                                 | Required | Default Value
----------- | ------------------------------------------- |:--------:| -------------
-`PKGBUILD` | PKGBUILD directory                          | **Yes**  |
-`OUTDIR`   | Output directory to store the built package | No       | `$HOME/arch-packages`
+Key            | Description               | Required | Type
+-------------- | ------------------------- |:--------:| ------
+`DIR`          | PKGBUILD directory        | **Yes**  | input
+`TOKEN`        | Server token              | **Yes**  | env
+`GITHUB_TOKEN` | GitHub token              | **Yes**  | env
+`PUBKEY_DIR`   | GPG public keys directory | No       | env
 
-###### You can use environment variable names in the options, they will be resolved.
